@@ -1,0 +1,44 @@
+
+<phpunit bootstrap="./bootstrap.php" colors="true">
+    <testsuite name="Application Test">
+        <!--<directory>./application</directory>-->
+        <directory>./</directory>
+    </testsuite>
+    <!--<testsuite name="Library Test Suite">
+        <directory>./library</directory>
+    </testsuite>-->
+    
+    <filter>
+        <!-- If Zend Framework is inside your project's library, uncomment this filter -->
+        <whitelist>
+            <directory suffix=".php">../application</directory>
+            <directory suffix=".php">../library/App</directory>
+            
+            <exclude>
+                <directory suffix=".phtml">../application/Bootstrap.php</directory>
+                <file>../application/controllers/ErrorController.php</file>
+                <file>../application/Bootstrap.php</file>
+            </exclude>
+            
+        </whitelist>
+        
+    </filter>
+    
+    <logging>
+        <log
+            type="coverage-html"
+            target="./report"
+            charset="UTF-8"
+            yui="true"
+            hightlight="true"
+            lowUpperBound="50"
+            hightLowerBound="80" 
+        />
+        
+        <log
+            type="testdox"
+            target="./log/testdox.html"
+        />
+    </logging>
+    
+</phpunit>
